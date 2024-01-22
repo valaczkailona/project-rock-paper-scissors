@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Rock-Paper-Scissors-Project</title>
+</head>
+
+<body>
+    <script>
+// This game is going to be played completely from the consoleThis game is going to be played completely from the console
+
+// to play against the compuer
+// function: getComputerChoise will randomly return either 'Rock', 'Paper', 'Scissors'
+// to make sure it works in console
+// function(playerSelection, computerSelection)
+// return a string that declares the winner
+// case-insensitive playerSelection
+// ties: re-playing
+
+// function game() : plays a best-of-five game that keeps score and reports a winner or looser at the end
+// loop or call playRound 5times
+
+function getComputerChoice() {
+    let choice = Math.floor(Math.random()*3);
+
+    if (choice %3 === 0) {
+        return choice = "rock";
+    } else if (choice %3 === 1) {
+        return choice = "paper";
+    } else {
+        return choice = "scissors";
+    }
+    
+};
+
+function playRound() {
+
+    const playerChoice = prompt("Choice between rock, paper or scissors!", " ");
+    const playerSelection = playerChoice.toLowerCase();
+    const computerSelection = getComputerChoice();
+   
+    console.log(computerSelection);
+    console.log(playerSelection);
+
+    if (playerSelection === "rock" && computerSelection === "paper") {
+        return(message = "You Lose! Paper beats rock");
+    } else if (playerSelection === "rock" && computerSelection === "scissors") {
+        return(message = "Congrats!You won!");
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
+        return(message = "Congrats!You won!");
+    } else if (playerSelection === "paper" && computerSelection === "scissors") {
+        return(message = "You Lose! Scissors beats paper");
+    } else if (playerSelection === "scissors" && computerSelection === "rock") {
+        return(message = "You Lose! Rock beats scissors");
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+        return(message = "Congrats!You won!");
+    } else {
+        return(message = "Replay, please")
+    }
+};
+
+console.log(playRound());
+
+function game() {
+
+    /* call 5 times function playRound
+    loop: 
+    store the results
+    !!! excepted "replay, please" !!!
+    if win > lose return: you are the winner
+    if lose > win return: you are the loser 
+    */
+
+    let computerWin = 0;
+    let playerWin = 0;  
+
+     for (let i = 0; i < 5; i++ ) {
+
+        
+        const roundResult = playRound();
+        console.log(roundResult);
+        
+
+        if (roundResult === "Replay, please" ) {
+        i = i-1;
+        }
+
+        if (roundResult.charAt(0) === "C") {
+            playerWin++;
+        } else if (roundResult.charAt(0) === "Y") {
+            computerWin++;
+        }
+    }
+
+    console.log(playerWin);
+    console.log(computerWin);
+
+    if (computerWin > playerWin) {
+        alert(message = "Sorry, You lost in best-of-five game.");
+    } else if (computerWin < playerWin) {
+        alert(message = "Congrats! You won in best-of-five game!");
+    };
+};
+
+game(0);
+
+
+    </script>
+
+</body>
+
+</html>
